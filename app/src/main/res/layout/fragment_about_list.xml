@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp"
+
+    >
+
+    <ImageView
+        android:id="@+id/aboutIcon"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_gravity="center"
+        tools:src="@drawable/button_rect_normal"/>
+
+    <TextView
+        android:id="@+id/aboutAppName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:gravity="center"
+        android:textSize="14sp"
+        tools:text="About AppName"/>
+
+    <TextView
+        android:id="@+id/aboutVersion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:gravity="center"
+        android:textSize="14sp"
+        tools:text="About version"/>
+
+    <LinearLayout
+        android:id="@+id/aboutSpecialContainer"
+        style="?android:buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/aboutSpecial1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:lines="1"
+            android:textSize="14sp"
+            tools:text="Special 1"/>
+        <Button
+            android:id="@+id/aboutSpecial2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:lines="1"
+            android:textSize="14sp"
+            tools:text="Special 2"/>
+        <Button
+            android:id="@+id/aboutSpecial3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:lines="1"
+            android:textSize="14sp"
+            tools:text="Special 3"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/aboutDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="4dp"
+        />
+
+    <TextView
+        android:id="@+id/aboutDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="8dp"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        tools:text="About description"/>
+
+    <TextView
+        android:id="@+id/aboutContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:gravity="left"
+        android:padding="8dp"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        tools:text="About description"/>
+
+</LinearLayout>

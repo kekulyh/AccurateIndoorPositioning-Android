@@ -5,19 +5,41 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.mikepenz.aboutlibraries.LibsBuilder;
+import com.mikepenz.aboutlibraries.ui.LibsSupportFragment;
 
 import au.usyd.capstone.indoorandroid.dummy.DummyContent;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         ItemFragment.OnListFragmentInteractionListener,
-        MapsFragment.OnFragmentInteractionListener {
+        MapsFragment.OnMapsFragmentInteractionListener,
+        AboutFragment.OnAboutFragmentInteractionListener
+
+{
+
+
+//    得到fragmentManager,用于填充fragment
+    final FragmentManager fragmentManager = getSupportFragmentManager();
+
+//    得到开源控件AboutLibrary的fragment
+    LibsSupportFragment libsSupportFragment = new LibsBuilder()
+
+        .withAboutIconShown(true)
+        .withAboutVersionShown(true)
+        .withAboutDescription("This is a small sample which can be set in the about my app description file.<br /><b>You can style this with html markup :D</b>")
+
+                //get the fragment
+        .supportFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +91,14 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+
+        // Configure the search info and add any event listeners...
+
+        return super.onCreateOptionsMenu(menu);
+
     }
 
     @Override
@@ -80,7 +109,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_search) {
             return true;
         }
 
@@ -93,18 +122,18 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_home) {
 
-        } else if (id == R.id.nav_slideshow) {
+            initScreen();
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_building) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_other) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_settings) {
 
+        } else if (id == R.id.nav_about) {
+            initAbout();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -112,14 +141,19 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-//    填充FrameLayout
+//    填充FrameLayout为MapFragment
     private void initScreen() {
-
-            final FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, new MapsFragment())
-                    .commit();
+            fragmentManager.beginTransaction().replace(R.id.container, new MapsFragment()).commit();
         }
+
+//    填充FrameLayout为MapFragment
+    private void initAbout() {
+        fragmentManager.beginTransaction().replace(R.id.container, new AboutFragment()).commit();
+    }
+
+    private void initAboutLibrary(){
+        fragmentManager.beginTransaction().replace(R.id.container, libsSupportFragment).commit();
+    }
 
 //    ItemFragment.OnListFragmentInteractionListener
     @Override
@@ -127,10 +161,15 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-//    MapsFragment.OnFragmentInteractionListener
+//    MapsFragment.OnMapsFragmentInteractionListener
     @Override
-    public void onFragmentInteraction(Uri uri) {
+    public void onMapsFragmentInteraction(Uri uri) {
 
     }
 
+//    AboutFragment.OnAboutFragmentInteractionListener
+    @Override
+    public void onAboutFragmentInteraction(Uri uri) {
+
+    }
 }

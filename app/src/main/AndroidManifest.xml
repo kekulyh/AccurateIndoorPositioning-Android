@@ -9,6 +9,10 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <!-- 注意: android:windowSoftInputMode="adjustPan"-->
+    <!-- adjustPan: 当前窗口的内容将自动移动以便当前焦点从不被键盘覆盖和用户能总是看到输入内容的部分-->
+    <!-- 不添加该属性,则当在toolbar里添加了fitSystemWindows属性后,当侧滑栏滑出时,点击搜索按钮,则toolbar会伸展至屏幕一半,挡住页面上部内容-->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,6 +22,9 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
+
+            android:windowSoftInputMode="adjustPan"
+
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

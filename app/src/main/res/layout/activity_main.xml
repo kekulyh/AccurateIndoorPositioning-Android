@@ -12,16 +12,19 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        >
 
-        android:theme="@style/AppTheme.AppBarOverlay">
-
+        <!-- 注意: 为了使状态栏获得primary_dark的颜色,必须将fitsSystemWindows放在Toolbar的节点里-->
+        <!-- 若是fitsSystemWindows放在最外层RelativeLayout节点里,则状态栏会变成灰色-->
+        <!-- 若两个节点均没有fitsSystemWindows,则toolbar与状态栏挤到一块-->
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
+            android:fitsSystemWindows="true"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             />
 
     </android.support.design.widget.AppBarLayout>
@@ -32,10 +35,8 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        android:layout_below="@id/appBarLayout"
-
         android:fitsSystemWindows="true"
+        android:layout_below="@id/appBarLayout"
         tools:openDrawer="start">
 
         <!-- 2.1 The main content view -->
@@ -51,7 +52,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:fitsSystemWindows="true"
             app:headerLayout="@layout/nav_header_main"
             app:menu="@menu/activity_main_drawer" />
 
