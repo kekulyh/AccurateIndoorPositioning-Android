@@ -17,13 +17,14 @@ import android.view.MenuItem;
 import com.mikepenz.aboutlibraries.LibsBuilder;
 import com.mikepenz.aboutlibraries.ui.LibsSupportFragment;
 
-import au.usyd.capstone.indoorandroid.dummy.DummyContent;
-
+/**
+ * Created by LYH on 16/3/10.
+ */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        ItemFragment.OnListFragmentInteractionListener,
         MapsFragment.OnMapsFragmentInteractionListener,
-        AboutFragment.OnAboutFragmentInteractionListener
+        AboutFragment.OnAboutFragmentInteractionListener,
+        BuildingFragment.OnBuildingFragmentInteractionListener
 
 {
 
@@ -33,11 +34,9 @@ public class MainActivity extends AppCompatActivity
 
 //    得到开源控件AboutLibrary的fragment
     LibsSupportFragment libsSupportFragment = new LibsBuilder()
-
         .withAboutIconShown(true)
         .withAboutVersionShown(true)
         .withAboutDescription("This is a small sample which can be set in the about my app description file.<br /><b>You can style this with html markup :D</b>")
-
                 //get the fragment
         .supportFragment();
 
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity
             navigationView.setNavigationItemSelectedListener(this);
         }
 
-        initScreen();
+        initMap();
     }
 
 //    返回键按下
@@ -95,7 +94,7 @@ public class MainActivity extends AppCompatActivity
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
 
-        // Configure the search info and add any event listeners...
+        // Configure the search menu_info and add any event listeners...
 
         return super.onCreateOptionsMenu(menu);
 
@@ -116,6 +115,7 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+//    侧滑边栏 菜单选项
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -123,17 +123,17 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-
-            initScreen();
-
+            initMap();
         } else if (id == R.id.nav_building) {
-
+            initBuilding();
         } else if (id == R.id.nav_other) {
 
         } else if (id == R.id.nav_settings) {
 
         } else if (id == R.id.nav_about) {
             initAbout();
+        } else if (id == R.id.nav_help) {
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -141,25 +141,28 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+
+
 //    填充FrameLayout为MapFragment
-    private void initScreen() {
-            fragmentManager.beginTransaction().replace(R.id.container, new MapsFragment()).commit();
-        }
+    private void initMap() {
+        fragmentManager.beginTransaction().replace(R.id.container, new MapsFragment()).commit();
+    }
 
 //    填充FrameLayout为MapFragment
     private void initAbout() {
         fragmentManager.beginTransaction().replace(R.id.container, new AboutFragment()).commit();
     }
 
+    private void initBuilding(){
+        fragmentManager.beginTransaction().replace(R.id.container, new BuildingFragment()).commit();
+    }
+
+
+//    开源组件aboutLibrary: https://github.com/mikepenz/AboutLibraries
     private void initAboutLibrary(){
         fragmentManager.beginTransaction().replace(R.id.container, libsSupportFragment).commit();
     }
 
-//    ItemFragment.OnListFragmentInteractionListener
-    @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
-
-    }
 
 //    MapsFragment.OnMapsFragmentInteractionListener
     @Override
@@ -170,6 +173,12 @@ public class MainActivity extends AppCompatActivity
 //    AboutFragment.OnAboutFragmentInteractionListener
     @Override
     public void onAboutFragmentInteraction(Uri uri) {
+
+    }
+
+//    BuildingFragment.OnBuildingFragmentInteractionListener
+    @Override
+    public void onBuildingFragmentInteraction(Uri uri) {
 
     }
 }

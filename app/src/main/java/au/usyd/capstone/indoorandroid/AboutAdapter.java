@@ -27,6 +27,7 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
     private static int colorSecondaryText;
     private static int colorDivider;
     private static int colorBackground;
+    private static Drawable drawableBackground;
     private static String descriptionHTML;
     private static String contactHTML;
 
@@ -48,6 +49,9 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
         colorSecondaryText = context.getResources().getColor(R.color.secondary_text);
         colorDivider = context.getResources().getColor(R.color.divider);
         colorBackground = context.getResources().getColor(R.color.primary_light);
+        drawableBackground = context.getResources().getDrawable(R.drawable.page_background_repeat);
+
+//        获取AboutFragment的填充内容
         aboutIcon = context.getResources().getDrawable(R.drawable.android_color);
         descriptionHTML = context.getResources().getString(R.string.aboutDescription);
         contactHTML = context.getResources().getString(R.string.aboutContact);
@@ -64,7 +68,8 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
         Log.e("AboutAdapter", "onCreateViewHolder aboutListView");
 
         //这边可以做一些属性设置，甚至事件监听绑定
-        aboutListView.setBackgroundColor(colorBackground);
+//        aboutListView.setBackgroundColor(colorBackground);
+        aboutListView.setBackgroundDrawable(drawableBackground);
         ViewHolder viewHolder=new ViewHolder(aboutListView);
 
         Log.e("AboutAdapter", "onCreateViewHolder viewHolder");

@@ -12,36 +12,41 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- AboutFragment-->
     <string name="aboutAppName">Indoor Android</string>
     <string name="aboutVersion">0.9</string>
     <string name="aboutDescription">
         <![CDATA[
-        <html>
-        <body>
-        <p><h4>Indoor positioning app for Android. <br>
-        In association with Indoor Positioning web application and hardware.</h4></p>
-        <p>Copyright 2016-2017 Yahong Liu.<br>
-        Source and graphics available under the GNU LGPL v3.</p>
-        </body>
-        </html>
+            <html>
+            <body>
+            <p><h4>Indoor positioning app for Android. <br>
+            In association with Indoor Positioning web application and hardware.</h4></p>
+            <p>Copyright © 2016 Yahong Liu.<br>
+            Source and graphics available under the Apache Licence v2.</p>
+            </body>
+            </html>
         ]]>
     </string>
     <string name="aboutContact">
         <![CDATA[
-        <html>
-        <body>
-        <h4>Contact:</h4>
-        <p>
-        <b>Address:</b>J03 - Electrical Engineering Building, The University of Sydney NSW 2006 Australia<br>
-        <b>Phone:</b> +61 0123456789<br>
-        <b>Email:</b> yliu6900@uni.sydney.edu.au; kekulyh@gmail.com<br>
-        <b>GitHub:</b> https://github.com/kekulyh</p>
-        </body>
-        </html>
+            <html>
+            <body>
+            <h4>Contact:</h4>
+            <p>
+            <b>Address:</b>J03 - Electrical Engineering Building, The University of Sydney NSW 2006 Australia<br>
+            <b>Phone:</b> +61 0123456789<br>
+            <b>Email:</b> yliu6900@uni.sydney.edu.au; kekulyh@gmail.com<br>
+            <b>GitHub:</b> https://github.com/kekulyh</p>
+            </body>
+            </html>
         ]]>
     </string>
     <string name="aboutSpecial1">GitHub</string>
     <string name="aboutSpecial2">Email</string>
-    <string name="aboutSpecial3">LGPLv3</string>
+    <string name="aboutSpecial3">Licence</string>
+
+    <!-- BuildingFragment-->
+    <string name="buildingName">J03 - Electrical Engineering Building</string>
+    <string name="buildingOpeningTime">AM 9:00 - PM 9:00</string>
 
 </resources>

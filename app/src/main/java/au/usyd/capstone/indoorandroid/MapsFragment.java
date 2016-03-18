@@ -24,6 +24,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
  * Use the {@link MapsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
+/**
+ * Created by LYH on 16/3/10.
+ */
 public class MapsFragment extends Fragment implements OnMapReadyCallback{
 
     private GoogleMap mMap;
@@ -116,7 +120,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback{
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
+     * to the activity and potentially menu_other fragments contained in that
      * activity.
      * <p/>
      * See the Android Training lesson <a href=
