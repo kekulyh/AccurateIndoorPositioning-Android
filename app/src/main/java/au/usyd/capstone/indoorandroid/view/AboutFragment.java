@@ -1,36 +1,37 @@
-package au.usyd.capstone.indoorandroid;
+package au.usyd.capstone.indoorandroid.view;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import au.usyd.capstone.indoorandroid.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MapsFragment.OnMapsFragmentInteractionListener} interface
+ * {@link AboutFragment.OnAboutFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link MapsFragment#newInstance} factory method to
+ * Use the {@link AboutFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 
 /**
- * Created by LYH on 16/3/10.
+ * Created by LYH on 16/3/17.
  */
-public class MapsFragment extends Fragment implements OnMapReadyCallback{
+public class AboutFragment extends Fragment {
 
-    private GoogleMap mMap;
+//    RecyclerView
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,9 +42,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback{
     private String mParam1;
     private String mParam2;
 
-    private OnMapsFragmentInteractionListener mListener;
+    private OnAboutFragmentInteractionListener mListener;
 
-    public MapsFragment() {
+    public AboutFragment() {
         // Required empty public constructor
     }
 
@@ -53,11 +54,11 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback{
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MapsFragment.
+     * @return A new instance of fragment AboutFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MapsFragment newInstance(String param1, String param2) {
-        MapsFragment fragment = new MapsFragment();
+    public static AboutFragment newInstance(String param1, String param2) {
+        AboutFragment fragment = new AboutFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -72,39 +73,48 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback{
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_maps, container, false);
-    }
+        View view = inflater.inflate(R.layout.fragment_about, container, false);
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        // init RecyclerView
+        if (view.getId() == R.id.aboutRecyclerView) {
+            mRecyclerView = (RecyclerView) view;
+            Log.e("AboutFragment", "mRecyclerView");
+        } else {
+            mRecyclerView = (RecyclerView) view.findViewById(R.id.aboutRecyclerView);
+            Log.e("AboutFragment", "mRecyclerView create");
+        }
 
-//        getChildFragmentManager() 用来获取子fragment节点的manager
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        Log.e("AboutFragment", "mLayoutManager");
+
+        // specify an adapter (see also next example)
+        mAdapter = new AboutAdapter(getContext());
+        mRecyclerView.setAdapter(mAdapter);
+        Log.e("AboutFragment", "mAdapter");
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onMapsFragmentInteraction(uri);
+            mListener.onAboutFragmentInteraction(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnMapsFragmentInteractionListener) {
-            mListener = (OnMapsFragmentInteractionListener) context;
+        if (context instanceof OnAboutFragmentInteractionListener) {
+            mListener = (OnAboutFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -120,36 +130,15 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback{
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially menu_other fragments contained in that
+     * to the activity and potentially other fragments contained in that
      * activity.
      * <p/>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnMapsFragmentInteractionListener {
+    public interface OnAboutFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onMapsFragmentInteraction(Uri uri);
+        void onAboutFragmentInteraction(Uri uri);
     }
-
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-    }
-
 }

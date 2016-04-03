@@ -1,4 +1,4 @@
-package au.usyd.capstone.indoorandroid;
+package au.usyd.capstone.indoorandroid.view;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import au.usyd.capstone.indoorandroid.R;
 
 /**
  * Created by LYH on 16/3/17.

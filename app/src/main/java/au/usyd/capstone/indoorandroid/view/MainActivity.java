@@ -1,4 +1,4 @@
-package au.usyd.capstone.indoorandroid;
+package au.usyd.capstone.indoorandroid.view;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import com.mikepenz.aboutlibraries.LibsBuilder;
 import com.mikepenz.aboutlibraries.ui.LibsSupportFragment;
 
+import au.usyd.capstone.indoorandroid.R;
+
 /**
  * Created by LYH on 16/3/10.
  */
@@ -28,11 +30,10 @@ public class MainActivity extends AppCompatActivity
 
 {
 
-
 //    得到fragmentManager,用于填充fragment
     final FragmentManager fragmentManager = getSupportFragmentManager();
 
-//    得到开源控件AboutLibrary的fragment
+//    得到开源控件AboutLibrary的fragment (已废弃,仅测试用)
     LibsSupportFragment libsSupportFragment = new LibsBuilder()
         .withAboutIconShown(true)
         .withAboutVersionShown(true)
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity
             navigationView.setNavigationItemSelectedListener(this);
         }
 
-        initMap();
+//        initMap();
     }
 
 //    返回键按下
@@ -86,6 +87,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+//    设置toolbar上的按钮
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -100,6 +102,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+//    设置toolbar的按钮的动作
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -123,7 +126,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            initMap();
+//            initMap();
         } else if (id == R.id.nav_building) {
             initBuilding();
         } else if (id == R.id.nav_other) {
