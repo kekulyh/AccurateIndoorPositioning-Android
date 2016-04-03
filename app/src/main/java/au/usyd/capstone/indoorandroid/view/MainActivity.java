@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         MapsFragment.OnMapsFragmentInteractionListener,
         AboutFragment.OnAboutFragmentInteractionListener,
-        BuildingFragment.OnBuildingFragmentInteractionListener
+        BuildingFragment.OnBuildingFragmentInteractionListener,
+        HelpFragment.OnHelpFragmentInteractionListener
 
 {
 
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_about) {
             initAbout();
         } else if (id == R.id.nav_help) {
-
+            initHelp();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -158,6 +159,10 @@ public class MainActivity extends AppCompatActivity
 
     private void initBuilding(){
         fragmentManager.beginTransaction().replace(R.id.container, new BuildingFragment()).commit();
+    }
+
+    private void initHelp(){
+        fragmentManager.beginTransaction().replace(R.id.container, new HelpFragment()).commit();
     }
 
 
@@ -182,6 +187,11 @@ public class MainActivity extends AppCompatActivity
 //    BuildingFragment.OnBuildingFragmentInteractionListener
     @Override
     public void onBuildingFragmentInteraction(Uri uri) {
+
+    }
+//    HelpFragment.OnHelpFragmentInteractionListener
+    @Override
+    public void onHelpFragmentInteraction(Uri uri) {
 
     }
 }

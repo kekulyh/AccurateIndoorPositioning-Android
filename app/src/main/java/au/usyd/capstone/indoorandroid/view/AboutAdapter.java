@@ -1,7 +1,9 @@
 package au.usyd.capstone.indoorandroid.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.util.Log;
@@ -37,8 +39,14 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
     private String aboutVersionName;
     private Drawable aboutIcon;
 
+    //    用于启动activity
+    private Context context;
+
     public  AboutAdapter(Context context){
         this.mInflater=LayoutInflater.from(context);
+
+        this.context = context;
+
 //        this.mTitles=new ArrayList<String>();
 //        for (int i=0;i<20;i++){
 //            int index=i+1;
@@ -89,6 +97,33 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
         holder.aboutSpecial1.setText(R.string.aboutSpecial1);
         holder.aboutSpecial2.setText(R.string.aboutSpecial2);
         holder.aboutSpecial3.setText(R.string.aboutSpecial3);
+
+        holder.aboutSpecial1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://github.com/kekulyh");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                context.startActivity(intent);
+            }
+        });
+
+        holder.aboutSpecial2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("http://gplus.to/kekulyh");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                context.startActivity(intent);
+            }
+        });
+
+        holder.aboutSpecial3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("http://www.apache.org/licenses/LICENSE-2.0");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                context.startActivity(intent);
+            }
+        });
 
         Log.e("AboutAdapter", "onBindViewHolder");
     }

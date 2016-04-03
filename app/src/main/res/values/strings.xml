@@ -42,7 +42,7 @@
         ]]>
     </string>
     <string name="aboutSpecial1">GitHub</string>
-    <string name="aboutSpecial2">Email</string>
+    <string name="aboutSpecial2">Google+</string>
     <string name="aboutSpecial3">Licence</string>
 
     <!-- BuildingFragment-->
@@ -50,7 +50,7 @@
     <string name="buildingOpeningTime">AM 9:00 - PM 9:00</string>
     <string name="title_activity_settings">Settings</string>
 
-    <!-- BuildingDetailActivity -->
+    <!-- FloorActivity -->
     <string name="title_activity_building_detail">Indoor Android</string>
 
 

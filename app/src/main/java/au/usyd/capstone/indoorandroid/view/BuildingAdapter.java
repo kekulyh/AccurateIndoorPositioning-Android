@@ -52,8 +52,6 @@ public class BuildingAdapter extends RecyclerView.Adapter<BuildingAdapter.ViewHo
         colorSecondaryText = context.getResources().getColor(R.color.secondary_text);
         colorDivider = context.getResources().getColor(R.color.divider);
 
-
-
         Log.e("BuildingAdapter", "constructor");
     }
 
@@ -87,7 +85,7 @@ public class BuildingAdapter extends RecyclerView.Adapter<BuildingAdapter.ViewHo
         holder.buildingCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, BuildingDetailActivity.class);
+                Intent intent = new Intent(context, FloorActivity.class);
 //                把该building name传给打开的detail的activity
                 intent.putExtra("title", building.getBuildingName());
                 context.startActivity(intent);

@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/accent</item>
+        <!-- SwipeBackActivity需要设置该属性,才可以右滑返回时看到下面一层 -->
+        <item name="android:windowIsTranslucent">true</item>
 
     </style>
 
