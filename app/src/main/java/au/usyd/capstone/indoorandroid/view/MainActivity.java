@@ -3,6 +3,7 @@ package au.usyd.capstone.indoorandroid.view;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
@@ -11,11 +12,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.mikepenz.aboutlibraries.LibsBuilder;
 import com.mikepenz.aboutlibraries.ui.LibsSupportFragment;
+
+import java.util.List;
 
 import au.usyd.capstone.indoorandroid.R;
 
@@ -25,14 +29,18 @@ import au.usyd.capstone.indoorandroid.R;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         MapsFragment.OnMapsFragmentInteractionListener,
+        HomeFragment.OnHomeFragmentInteractionListener,
         AboutFragment.OnAboutFragmentInteractionListener,
         BuildingFragment.OnBuildingFragmentInteractionListener,
         HelpFragment.OnHelpFragmentInteractionListener
+
 
 {
 
 //    得到fragmentManager,用于填充fragment
     final FragmentManager fragmentManager = getSupportFragmentManager();
+//    得到侧滑边栏,提成全局,供onBackPressed()调用
+    private NavigationView navigationView;
 
 //    得到开源控件AboutLibrary的fragment (已废弃,仅测试用)
     LibsSupportFragment libsSupportFragment = new LibsBuilder()
@@ -69,12 +77,24 @@ public class MainActivity extends AppCompatActivity
         }
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) {
             navigationView.setNavigationItemSelectedListener(this);
         }
 
-//        initMap();
+        initHome();
+    }
+
+//    获取当前显示的fragment
+    public Fragment getVisibleFragment(){
+
+        List<Fragment> fragments = fragmentManager.getFragments();
+
+        for(Fragment fragment : fragments){
+            if(fragment != null && fragment.isVisible())
+                return fragment;
+        }
+        return null;
     }
 
 //    返回键按下
@@ -83,8 +103,20 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+        } else if (getVisibleFragment() != fragmentManager.findFragmentByTag("Home")){
+
+            if (fragmentManager.findFragmentByTag("Home")!=null){
+//                第二个参数flag为0,则弹出最上面的栈,如果为1,则弹出所有栈.
+                fragmentManager.popBackStackImmediate("HomeStack", 0);
+            }else{
+                initHome();
+            }
+            navigationView.setCheckedItem(R.id.nav_home);
+            Log.e("onBackPressed","HomeStack");
+        }else{
+//            不能用super.onBackPressed,否则栈顺序会出错
+            supportFinishAfterTransition();
+            Log.e("onBackPressed", "super");
         }
     }
 
@@ -127,7 +159,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-//            initMap();
+            initHome();
         } else if (id == R.id.nav_building) {
             initBuilding();
         } else if (id == R.id.nav_other) {
@@ -149,26 +181,48 @@ public class MainActivity extends AppCompatActivity
 
 //    填充FrameLayout为MapFragment
     private void initMap() {
-        fragmentManager.beginTransaction().replace(R.id.container, new MapsFragment()).commit();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, new MapsFragment())
+                .commit();
     }
 
-//    填充FrameLayout为MapFragment
+//    填充FrameLayout为HomeFragment
+    private void initHome() {
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, new HomeFragment(), "Home")
+                .addToBackStack("HomeStack")
+                .commit();
+    }
+
+
+//    填充FrameLayout为AboutFragment
     private void initAbout() {
-        fragmentManager.beginTransaction().replace(R.id.container, new AboutFragment()).commit();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, new AboutFragment())
+                .addToBackStack(null)
+                .commit();
     }
 
     private void initBuilding(){
-        fragmentManager.beginTransaction().replace(R.id.container, new BuildingFragment()).commit();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, new BuildingFragment())
+                .addToBackStack(null)
+                .commit();
     }
 
     private void initHelp(){
-        fragmentManager.beginTransaction().replace(R.id.container, new HelpFragment()).commit();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, new HelpFragment())
+                .addToBackStack(null)
+                .commit();
     }
 
 
 //    开源组件aboutLibrary: https://github.com/mikepenz/AboutLibraries
     private void initAboutLibrary(){
-        fragmentManager.beginTransaction().replace(R.id.container, libsSupportFragment).commit();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, libsSupportFragment)
+                .commit();
     }
 
 
@@ -192,6 +246,11 @@ public class MainActivity extends AppCompatActivity
 //    HelpFragment.OnHelpFragmentInteractionListener
     @Override
     public void onHelpFragmentInteraction(Uri uri) {
+
+    }
+//    HomeFragment.OnHomeFragmentInteractionListener
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
     }
 }

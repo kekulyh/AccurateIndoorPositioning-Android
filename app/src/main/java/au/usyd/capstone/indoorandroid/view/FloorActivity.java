@@ -14,9 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import au.usyd.capstone.indoorandroid.R;
-import au.usyd.capstone.indoorandroid.domain.Building;
+import au.usyd.capstone.indoorandroid.domain.Floor;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
+/**
+ * Created by LYH on 16/4/1.
+ */
 public class FloorActivity extends SwipeBackActivity {
 
     // RecyclerView
@@ -48,10 +51,13 @@ public class FloorActivity extends SwipeBackActivity {
 
 //        设置CollapsingToolbar上的图片
         ImageView imageView = (ImageView) findViewById(R.id.floorImageView);
-        imageView.setImageDrawable(getResources().getDrawable(R.drawable.building_example_sm));
+        imageView.setImageDrawable(getResources().getDrawable(R.drawable.floor_example_sm));
 
-        // 设置fragment背景
+        // 设置背景,decorView为最顶层的view,用SwipeBackActivity时,不可以这么设置,否则swipback的时候下面一层activity会是背景图
         drawableBackground = getResources().getDrawable(R.drawable.page_background_repeat);
+//        getWindow().getDecorView().setBackgroundDrawable(drawableBackground);
+        RecyclerView floorRecyclerView = (RecyclerView) findViewById(R.id.floorRecyclerView);
+        floorRecyclerView.setBackgroundDrawable(drawableBackground);
 
         // init RecyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.floorRecyclerView);
@@ -63,14 +69,14 @@ public class FloorActivity extends SwipeBackActivity {
         Log.e("FloorActivity", "mLayoutManager");
 
         // specify an adapter (see also next example)
-        mAdapter = new BuildingAdapter(this, createList(20));
+        mAdapter = new FloorAdapter(this, createList(10));
         mRecyclerView.setAdapter(mAdapter);
         Log.e("FloorActivity", "mAdapter");
 
 
     }
 
-//    toolbar按钮功能
+//    toolbar按钮功能,返回键
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -93,10 +99,10 @@ public class FloorActivity extends SwipeBackActivity {
 
         List result = new ArrayList();
         for (int i = 1; i <= size; i++) {
-            Building ci = new Building();
-            ci.setBuildingImage(getResources().getDrawable(R.drawable.floor));
-            ci.setBuildingName("Floor: Floor_" + i);
-            ci.setBuildingOpeningTime("Floor Details: Detail_" + i);
+            Floor ci = new Floor();
+            ci.setFloorImage(getResources().getDrawable(R.drawable.floor));
+            ci.setFloorName("Floor: Floor_" + i);
+            ci.setFloorDetail("Floor Details: Detail_" + i);
 
             result.add(ci);
 

@@ -26,12 +26,6 @@ public class HelpFragment extends Fragment {
         // Required empty public constructor
     }
 
-
-    public static AboutFragment newInstance(String param1, String param2) {
-        AboutFragment fragment = new AboutFragment();
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -90,7 +90,7 @@ public class BuildingFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_building, container, false);
 
-//        设置每个Card的背景色
+//        设置整个view的背景色
         view.setBackgroundDrawable(drawableBackground);
 
         // init RecyclerView

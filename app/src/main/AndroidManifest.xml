@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="au.usyd.capstone.indoorandroid">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -9,7 +10,6 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <!-- 注意: android:windowSoftInputMode="adjustPan" -->
     <!-- adjustPan: 当前窗口的内容将自动移动以便当前焦点从不被键盘覆盖和用户能总是看到输入内容的部分 -->
@@ -46,9 +46,9 @@
         <activity
             android:name=".view.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity
-            android:name=".view.FloorActivity"
-            ></activity>
+        <activity android:name=".view.FloorActivity" />
+        <activity android:name=".view.RoomActivity" />
+        <activity android:name=".view.SingleRoomActivity"></activity>
     </application>
 
 </manifest>

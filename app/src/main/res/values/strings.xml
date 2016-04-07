@@ -9,9 +9,6 @@
 
     <string name="title_activity_maps">Map</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <!-- AboutFragment-->
     <string name="aboutAppName">Indoor Android</string>
     <string name="aboutVersion">0.9</string>
@@ -52,10 +49,6 @@
 
     <!-- FloorActivity -->
     <string name="title_activity_building_detail">Indoor Android</string>
-
-
-
-
 
 
     <!-- Strings related to Settings -->

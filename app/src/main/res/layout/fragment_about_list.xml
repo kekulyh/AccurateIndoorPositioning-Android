@@ -11,6 +11,7 @@
     android:paddingRight="@dimen/padding_right"
     >
 
+
     <ImageView
         android:id="@+id/aboutIcon"
         android:layout_width="@dimen/about_icon"
@@ -103,4 +104,8 @@
         android:textStyle="normal"
         tools:text="About description"/>
 
+
+
+
 </LinearLayout>
+

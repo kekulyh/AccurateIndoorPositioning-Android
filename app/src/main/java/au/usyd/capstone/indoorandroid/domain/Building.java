@@ -7,6 +7,7 @@ import java.io.Serializable;
 /**
  * Created by LYH on 16/4/3.
  */
+
 public class Building implements Serializable {
 
     private Drawable buildingImage;

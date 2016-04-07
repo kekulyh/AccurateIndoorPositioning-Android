@@ -42,7 +42,9 @@ public class BuildingAdapter extends RecyclerView.Adapter<BuildingAdapter.ViewHo
     public BuildingAdapter(Context context, List<Building> buildingCardList){
         this.mInflater = LayoutInflater.from(context);
 
-        this.buildingCardList = buildingCardList;
+        if (!buildingCardList.isEmpty()){
+            this.buildingCardList = buildingCardList;
+        }
 
         this.context = context;
 

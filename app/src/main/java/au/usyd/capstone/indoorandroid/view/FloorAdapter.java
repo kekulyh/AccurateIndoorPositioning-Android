@@ -34,7 +34,11 @@ public class FloorAdapter extends RecyclerView.Adapter<FloorAdapter.ViewHolder> 
 
     public FloorAdapter(Context context, List<Floor> floorCardList) {
         this.mInflater = mInflater.from(context);
-        this.floorCardList = floorCardList;
+
+        if (!floorCardList.isEmpty()){
+            this.floorCardList = floorCardList;
+        }
+
         this.context = context;
 
 //        只能在构造函数里获取到资源文件的int
@@ -54,7 +58,6 @@ public class FloorAdapter extends RecyclerView.Adapter<FloorAdapter.ViewHolder> 
         Log.e("FloorAdapter", "onCreateViewHolder floorListView");
 
         //这边可以做一些属性设置，甚至事件监听绑定
-//        buildingListView.setBackgroundDrawable(drawableBackground);
         ViewHolder viewHolder = new ViewHolder(floorListView);
 
         Log.e("FloorAdapter", "onCreateViewHolder viewHolder");
@@ -74,7 +77,7 @@ public class FloorAdapter extends RecyclerView.Adapter<FloorAdapter.ViewHolder> 
         holder.floorCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, FloorActivity.class);
+                Intent intent = new Intent(context, RoomActivity.class);
 //                把该floor name传给打开的room activity
                 intent.putExtra("title", floor.getFloorName());
                 context.startActivity(intent);
@@ -82,7 +85,7 @@ public class FloorAdapter extends RecyclerView.Adapter<FloorAdapter.ViewHolder> 
         });
 
 
-        Log.e("BuildingAdapter", "onBindViewHolder");
+        Log.e("FloorAdapter", "onBindViewHolder");
 
     }
 
@@ -106,7 +109,7 @@ public class FloorAdapter extends RecyclerView.Adapter<FloorAdapter.ViewHolder> 
             super(itemView);
 
             floorCardView = (CardView) itemView;
-            floorImage = (ImageView) itemView.findViewById(R.id.floorImageView);
+            floorImage = (ImageView) itemView.findViewById(R.id.floorImage);
             floorName = (TextView) itemView.findViewById(R.id.floorName);
             floorName.setTextColor(colorPrimaryText);
             floorDivider = itemView.findViewById(R.id.floorDivider);
