@@ -9,7 +9,9 @@ Android client for AccurateIndoorPositioning
 
 * Second design version 2016/04/05
 	* 主页不采用google api，待设计， 已完成跳转至roomactivity，修改SwipeBackActivity继承AppCompatActivity。SingleRoomActivity需要用WebView加载svg和js来实现地图。需要java后端返回building、floor、room等的JSON数据。
-	
+
+* Third design version 2016/04/09
+	* WebView与JS交互问题非常多，原来的定位功能及路径计算都是用js实现，WebView目前无法满足我的JS要求，AJAX异步更新问题也很大。似乎只能选别的方法来实现了。暂时选择高德的API显示室内地图。
 
 	
 ---
