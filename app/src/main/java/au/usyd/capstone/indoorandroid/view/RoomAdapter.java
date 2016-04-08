@@ -1,6 +1,6 @@
 package au.usyd.capstone.indoorandroid.view;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -30,9 +30,9 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.ViewHolder> {
     private static int colorDivider;
 
 //    用于启动activity时,传给intent
-    private Context context;
-
-    public RoomAdapter(Context context, List<Room> roomCardList) {
+    private Activity context;
+//    由于需要在调用startactivity后设置动画overridePendingTransition,所以此处传入activity类型的context,这样可以调用activity的方法
+    public RoomAdapter(Activity context, List<Room> roomCardList) {
         this.mInflater = mInflater.from(context);
 
         if (!roomCardList.isEmpty()){
@@ -81,6 +81,8 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.ViewHolder> {
 //                把该room name传给打开的room activity
                 intent.putExtra("title", room.getRoomName());
                 context.startActivity(intent);
+//                必须在调用startActivity之后调用overridePendingTransition才会生效
+                context.overridePendingTransition(android.R.anim.slide_in_left, 0);
             }
         });
 

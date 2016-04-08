@@ -48,7 +48,9 @@
             android:label="@string/title_activity_settings" />
         <activity android:name=".view.FloorActivity" />
         <activity android:name=".view.RoomActivity" />
-        <activity android:name=".view.SingleRoomActivity"></activity>
+        <activity android:name=".view.SingleRoomActivity"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
     </application>
 
 </manifest>

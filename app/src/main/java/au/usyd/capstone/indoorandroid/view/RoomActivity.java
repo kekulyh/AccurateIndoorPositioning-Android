@@ -89,6 +89,12 @@ public class RoomActivity extends SwipeBackActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(0, android.R.anim.slide_out_right);
+    }
+
     private List createList(int size) {
 
         List result = new ArrayList();
