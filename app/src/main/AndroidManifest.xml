@@ -5,22 +5,23 @@
     <!-- WebView需要的权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality. 
     -->
-    <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
-
-    <!--高德SDK室内地图包需要的基础权限-->
-    <!--<uses-permission android:name="android.permission.INTERNET" />-->
-    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
-    <!--<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
-    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
-    <!--<uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />-->
-    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
-
-
+    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
+    <!-- 高德SDK室内地图包需要的基础权限 -->
+    <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
+    <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
+    <!-- <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" /> -->
+    <!-- <uses-permission android:name="android.permission.READ_PHONE_STATE" /> -->
     <!-- 注意: android:windowSoftInputMode="adjustPan" -->
     <!-- adjustPan: 当前窗口的内容将自动移动以便当前焦点从不被键盘覆盖和用户能总是看到输入内容的部分 -->
     <!-- 不添加该属性,则当在toolbar里添加了fitSystemWindows属性后,当侧滑栏滑出时,点击搜索按钮,则toolbar会伸展至屏幕一半,挡住页面上部内容 -->
@@ -31,19 +32,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- 高德SDK需要的Key-->
-        <!--<meta-data android:name="indoormap3d_key" android:value="dff276af40ad6de6e26eb47ec35bfcb3"/>-->
+        <!-- 高德SDK需要的Key -->
+        <!-- <meta-data android:name="indoormap3d_key" android:value="dff276af40ad6de6e26eb47ec35bfcb3"/> -->
 
         <activity
             android:name=".view.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -53,18 +54,33 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/. 
         -->
-        <!--<meta-data-->
-            <!--android:name="com.google.android.geo.API_KEY"-->
-            <!--android:value="@string/google_maps_key" />-->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.geo.API_KEY" -->
+        <!-- android:value="@string/google_maps_key" /> -->
 
         <activity
             android:name=".view.SettingsActivity"
             android:label="@string/title_activity_settings" />
+
         <activity android:name=".view.FloorActivity" />
+
         <activity android:name=".view.RoomActivity" />
-        <activity android:name=".view.SingleRoomActivity"
-            android:windowSoftInputMode="adjustPan">
+
+        <activity
+            android:name=".view.SingleRoomActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
+
+        <activity
+            android:name=".view.LoginActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
+
     </application>
 
 </manifest>
