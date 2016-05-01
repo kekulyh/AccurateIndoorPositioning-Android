@@ -16,5 +16,7 @@ Android client for AccurateIndoorPositioning
 * Fourth design version 2016/04/10
 	* 高德SDK无法满足要求，它的地图文件是必须要经过提交及数据采集处理的，决定依然采用WebView实现。改写后端的js方法，目前可以正常与后端交互，实现定位功能。
 
+* Fifth design version 2016/05/02
+	* 3D实时姿态 (Gesture Fragment) 待实现。
 	
 ---
