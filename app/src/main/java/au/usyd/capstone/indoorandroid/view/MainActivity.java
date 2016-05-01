@@ -162,8 +162,8 @@ public class MainActivity extends AppCompatActivity
             initHome();
         } else if (id == R.id.nav_building) {
             initBuilding();
-        } else if (id == R.id.nav_other) {
-
+        } else if (id == R.id.nav_gesture) {
+            initGesture();
         } else if (id == R.id.nav_settings) {
 
         } else if (id == R.id.nav_about) {
@@ -203,6 +203,7 @@ public class MainActivity extends AppCompatActivity
                 .commit();
     }
 
+//    填充FrameLayout为BuildingFragment
     private void initBuilding(){
         fragmentManager.beginTransaction()
                 .replace(R.id.container, new BuildingFragment())
@@ -210,6 +211,15 @@ public class MainActivity extends AppCompatActivity
                 .commit();
     }
 
+//    填充FrameLayout为GestureFragment
+    private void initGesture(){
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, new GestureFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+//    填充FrameLayout为HelpFragment
     private void initHelp(){
         fragmentManager.beginTransaction()
                 .replace(R.id.container, new HelpFragment())

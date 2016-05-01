@@ -37,6 +37,7 @@ dependencies {
     //    compile 'me.imid.swipebacklayout.lib:library:1.0.0'
     compile project(':SwipeBackLibrary')
     //    https://github.com/falnatsheh/MarkdownView
+    compile files('libs/Amap_Android_IndoorMap_v1.0_20151023.jar')
     compile 'com.android.support:appcompat-v7:24.0.0-alpha1'
     compile 'com.android.support:design:24.0.0-alpha1'
     compile 'com.android.support:support-v4:24.0.0-alpha1'
@@ -46,5 +47,4 @@ dependencies {
     compile 'com.google.android.gms:play-services-identity:8.4.0'
     compile 'com.google.android.gms:play-services-gcm:8.4.0'
     compile 'us.feras.mdv:markdownview:1.1.0'
-    compile files('libs/Amap_Android_IndoorMap_v1.0_20151023.jar')
 }
