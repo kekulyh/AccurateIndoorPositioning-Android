@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/xwalk_core_library/build/intermediates/res/merged/androidTest/debug/drawable-v21/button_compat.xml",
+        "source": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/xwalk_core_library/build/intermediates/bundles/debug/res/drawable-v21/button_compat.xml"
+    },
+    {
+        "merged": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/xwalk_core_library/build/intermediates/res/merged/androidTest/debug/drawable-v21/button_borderless_compat.xml",
+        "source": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/xwalk_core_library/build/intermediates/bundles/debug/res/drawable-v21/button_borderless_compat.xml"
+    }
+]

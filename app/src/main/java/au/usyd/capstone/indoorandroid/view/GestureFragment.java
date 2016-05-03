@@ -3,6 +3,7 @@ package au.usyd.capstone.indoorandroid.view;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,9 +16,12 @@ import android.view.ViewGroup;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceResponse;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import org.xwalk.core.XWalkPreferences;
+import org.xwalk.core.XWalkSettings;
+import org.xwalk.core.XWalkView;
 
 import au.usyd.capstone.indoorandroid.R;
 
@@ -31,7 +35,11 @@ import au.usyd.capstone.indoorandroid.R;
  */
 public class GestureFragment extends Fragment {
 
+    // WebView
     private WebView mWebView;
+
+    // XWalkView
+    private XWalkView mXWalkView;
 
     private static Drawable drawableBackground;
 
@@ -87,7 +95,10 @@ public class GestureFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_gesture, container, false);
 
         // init webview
-        initWebView(view);
+//        initWebView(view);
+
+        // init XWalkView
+        initXWalkView(view);
 
         return view;
     }
@@ -116,25 +127,75 @@ public class GestureFragment extends Fragment {
         mListener = null;
     }
 
-    // init webview
-    private void initWebView(View view){
-//        WebView设置
-        mWebView = (WebView) view.findViewById(R.id.gestureWebView);
-//        获取settings,使webview支持js
-        WebSettings webSettings = mWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-//        支持两指页面缩放
-        webSettings.setBuiltInZoomControls(true);
-//        loadUrl要在setWebViewClient之前调用
-        mWebView.loadUrl("http://192.168.0.6:8080/capstone/gesture");
-//        mWebView.addJavascriptInterface();
-//        设置自己覆写的webclient,在该页面内打开指定url,不跳转浏览器
-        mWebView.setWebViewClient(new MyWebViewClient());
-        mWebView.setWebChromeClient(new MyWebChromeClient());
+    // init XWalkView
+    private void initXWalkView(View view){
+        mXWalkView = (XWalkView) view.findViewById(R.id.gestureXWalkView);
+
+        // turn on debugging
+        XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
+
+        // 获取setting
+        XWalkSettings mXWalkSettings = mXWalkView.getSettings();
+
+        // 支持两指缩放
+        mXWalkSettings.setBuiltInZoomControls(true);
+
+        mXWalkView.load("http://192.168.0.6:8080/capstone/gesture", null);
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mXWalkView != null) {
+            mXWalkView.pauseTimers();
+            mXWalkView.onHide();
+        }
+    }
 
-    //    自定义的WebViewClient,这样可以不跳转至自带浏览器
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mXWalkView != null) {
+            mXWalkView.resumeTimers();
+            mXWalkView.onShow();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mXWalkView != null) {
+            mXWalkView.onDestroy();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+        if (mXWalkView != null) {
+            mXWalkView.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    //    // init webview
+//    private void initWebView(View view){
+////        WebView设置
+//        mWebView = (WebView) view.findViewById(R.id.gestureWebView);
+////        获取settings,使webview支持js
+//        WebSettings webSettings = mWebView.getSettings();
+//        webSettings.setJavaScriptEnabled(true);
+////        支持两指页面缩放
+//        webSettings.setBuiltInZoomControls(true);
+////        loadUrl要在setWebViewClient之前调用
+//        mWebView.loadUrl("http://192.168.0.6:8080/capstone/gesture");
+////        mWebView.addJavascriptInterface();
+////        设置自己覆写的webclient,在该页面内打开指定url,不跳转浏览器
+//        mWebView.setWebViewClient(new MyWebViewClient());
+//        mWebView.setWebChromeClient(new MyWebChromeClient());
+//    }
+
+
+    // 自定义的WebViewClient,这样可以不跳转至自带浏览器
     private class MyWebViewClient extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -158,7 +219,7 @@ public class GestureFragment extends Fragment {
     }
 
 
-    //    自定义的WebChromeClient,覆写onJsAlert,避免alert的title里显示为“：来自file:////”
+    // 自定义的WebChromeClient,覆写onJsAlert,避免alert的title里显示为“：来自file:////”
     private class MyWebChromeClient extends WebChromeClient {
         @Override
         public boolean onJsAlert(WebView view, String url, String message, JsResult result) {

@@ -8,12 +8,12 @@
         "source": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/SwipeBackLibrary/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-hdpi/abc_list_selector_disabled_holo_light.9.png"
     },
     {
-        "merged": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/SwipeBackLibrary/build/intermediates/res/merged/release/drawable-hdpi-v4/abc_ic_clear_mtrl_alpha.png",
-        "source": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/SwipeBackLibrary/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-hdpi/abc_ic_clear_mtrl_alpha.png"
-    },
-    {
         "merged": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/SwipeBackLibrary/build/intermediates/res/merged/release/drawable-hdpi-v4/abc_switch_track_mtrl_alpha.9.png",
         "source": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/SwipeBackLibrary/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-hdpi/abc_switch_track_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/SwipeBackLibrary/build/intermediates/res/merged/release/drawable-hdpi-v4/abc_ic_clear_mtrl_alpha.png",
+        "source": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/SwipeBackLibrary/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-hdpi/abc_ic_clear_mtrl_alpha.png"
     },
     {
         "merged": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/SwipeBackLibrary/build/intermediates/res/merged/release/drawable-hdpi-v4/abc_btn_check_to_on_mtrl_015.png",

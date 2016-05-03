@@ -4,12 +4,12 @@
         "source": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/SwipeBackLibrary/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-xxhdpi/abc_btn_radio_to_on_mtrl_015.png"
     },
     {
-        "merged": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/SwipeBackLibrary/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png",
-        "source": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/SwipeBackLibrary/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-xxhdpi/abc_menu_hardkey_panel_mtrl_mult.9.png"
-    },
-    {
         "merged": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/SwipeBackLibrary/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/abc_list_longpressed_holo.9.png",
         "source": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/SwipeBackLibrary/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-xxhdpi/abc_list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/SwipeBackLibrary/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png",
+        "source": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/SwipeBackLibrary/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-xxhdpi/abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
     {
         "merged": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/SwipeBackLibrary/build/intermediates/res/merged/androidTest/debug/drawable-xxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png",

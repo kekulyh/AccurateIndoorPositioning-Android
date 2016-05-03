@@ -5,6 +5,12 @@
     <!-- WebView需要的权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- Crosswalk需要的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--<uses-permission android:name="android.permission.INTERNET" />-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- 注册登录界面需要的权限 -->
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
