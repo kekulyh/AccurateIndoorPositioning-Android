@@ -41,7 +41,7 @@ public class HomeFragment extends Fragment {
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onHomeFragmentInteraction(uri);
         }
     }
 
@@ -74,6 +74,6 @@ public class HomeFragment extends Fragment {
      */
     public interface OnHomeFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onHomeFragmentInteraction(Uri uri);
     }
 }

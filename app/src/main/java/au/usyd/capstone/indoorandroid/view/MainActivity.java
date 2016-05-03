@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity
         HomeFragment.OnHomeFragmentInteractionListener,
         AboutFragment.OnAboutFragmentInteractionListener,
         BuildingFragment.OnBuildingFragmentInteractionListener,
+        GestureFragment.OnGestureFragmentInteractionListener,
         HelpFragment.OnHelpFragmentInteractionListener
 
 
@@ -260,7 +261,12 @@ public class MainActivity extends AppCompatActivity
     }
 //    HomeFragment.OnHomeFragmentInteractionListener
     @Override
-    public void onFragmentInteraction(Uri uri) {
+    public void onHomeFragmentInteraction(Uri uri) {
+
+    }
+//    GestureFragment.OnGestureFragmentInteractionListener
+    @Override
+    public void onGestureFragmentInteraction(Uri uri) {
 
     }
 }

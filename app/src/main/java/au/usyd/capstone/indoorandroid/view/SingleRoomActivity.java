@@ -15,14 +15,12 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.gaode.indoormap.manager.IndoorDataManager;
-
 import au.usyd.capstone.indoorandroid.R;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 public class SingleRoomActivity extends SwipeBackActivity {
 
-    private IndoorDataManager mIndoorManager;
+//    private IndoorDataManager mIndoorManager;
 
     private WebView mWebView;
 
@@ -59,7 +57,7 @@ public class SingleRoomActivity extends SwipeBackActivity {
 //        支持两指页面缩放
         webSettings.setBuiltInZoomControls(true);
 //        loadUrl要在setWebViewClient之前调用
-        mWebView.loadUrl("http://192.168.0.14:8080/capstone/monitorandroid");
+        mWebView.loadUrl("http://192.168.0.6:8080/capstone/monitorandroid");
 //        mWebView.addJavascriptInterface();
 //        设置自己覆写的webclient,在该页面内打开指定url,不跳转浏览器
         mWebView.setWebViewClient(new MyWebViewClient());

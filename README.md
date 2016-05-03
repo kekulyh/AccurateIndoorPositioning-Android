@@ -18,5 +18,8 @@ Android client for AccurateIndoorPositioning
 
 * Fifth design version 2016/05/02
 	* 3D实时姿态 (Gesture Fragment) 待实现。
+
+* Sixth design version 2016/05/03 
+	* GestureFragment error log: [ERROR:gles2_cmd_decoder.cc(7728)] [.CommandBufferContext]RENDER WARNING: there is no texture bound to the unit 0 
 	
 ---
