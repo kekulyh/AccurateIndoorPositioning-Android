@@ -81,7 +81,12 @@ public class HelpFragment extends Fragment {
 
     private void initMarkdownView(View view){
         mMarkdownView = (MarkdownView) view.findViewById(R.id.markdownView);
-        mMarkdownView.loadMarkdownFile("https://raw.githubusercontent.com/kekulyh/AccurateIndoorPositioning-Android/master/README.md");
+
+        // 正常加载
+//        mMarkdownView.loadMarkdownFile("file:///android_asset/help.md");
+
+        // 按css文件加载
+        mMarkdownView.loadMarkdownFile("file:///android_asset/help.md", "file:///android_asset/markdown_css_themes/paperwhite.css");
     }
 
 //    // init XWalkView
