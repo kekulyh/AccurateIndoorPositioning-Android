@@ -23,5 +23,8 @@ Android client for AccurateIndoorPositioning
 	* GestureFragment error log: [ERROR:gles2_cmd_decoder.cc(7728)] [.CommandBufferContext]RENDER WARNING: there is no texture bound to the unit 0.
 	* WebView对WebGl支持有问题，不能显示姿态，换用Crosswalk的XWalkVeiw。
 
+* Seventh design version 2016/05/04
+	* gesture fragment使用XWalkView，可正常显示姿态
+	* 微调help页面的MarkdownView
 	
 ---

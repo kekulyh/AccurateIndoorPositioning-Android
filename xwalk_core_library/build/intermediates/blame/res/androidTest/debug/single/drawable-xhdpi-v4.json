@@ -4,12 +4,12 @@
         "source": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/xwalk_core_library/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/ic_warning.png"
     },
     {
-        "merged": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/xwalk_core_library/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/dropdown_popup_background_down.9.png",
-        "source": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/xwalk_core_library/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/dropdown_popup_background_down.9.png"
-    },
-    {
         "merged": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/xwalk_core_library/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/bubble.9.png",
         "source": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/xwalk_core_library/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/bubble.9.png"
+    },
+    {
+        "merged": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/xwalk_core_library/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/dropdown_popup_background_down.9.png",
+        "source": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/xwalk_core_library/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/dropdown_popup_background_down.9.png"
     },
     {
         "merged": "/Users/LYH/AndroidStudioProjects/IndoorAndroid/xwalk_core_library/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/ic_search.png",

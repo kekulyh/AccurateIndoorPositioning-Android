@@ -8,6 +8,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+
+import org.xwalk.core.XWalkView;
 
 import au.usyd.capstone.indoorandroid.R;
 import us.feras.mdv.MarkdownView;
@@ -19,6 +22,12 @@ public class HelpFragment extends Fragment {
 
     //    RecyclerView
     private MarkdownView mMarkdownView;
+
+    // XWalkView
+    private XWalkView mXWalkView;
+
+    // WebView
+    private WebView mWebView;
 
     private OnHelpFragmentInteractionListener mListener;
 
@@ -38,8 +47,11 @@ public class HelpFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_help, container, false);
 
-        mMarkdownView = (MarkdownView) view.findViewById(R.id.markdownView);
-        mMarkdownView.loadMarkdownFile("https://raw.githubusercontent.com/kekulyh/AccurateIndoorPositioning-Android/master/README.md");
+        // init MarkdownView
+        initMarkdownView(view);
+
+        // init XWalkView
+//        initXWalkView(view);
 
         return view;
     }
@@ -66,6 +78,61 @@ public class HelpFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    private void initMarkdownView(View view){
+        mMarkdownView = (MarkdownView) view.findViewById(R.id.markdownView);
+        mMarkdownView.loadMarkdownFile("https://raw.githubusercontent.com/kekulyh/AccurateIndoorPositioning-Android/master/README.md");
+    }
+
+//    // init XWalkView
+//    private void initXWalkView(View view){
+//        mXWalkView = (XWalkView) view.findViewById(R.id.helpXWalkView);
+//
+//        // turn on debugging
+//        XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
+//
+//        // 获取setting
+//        XWalkSettings mXWalkSettings = mXWalkView.getSettings();
+//
+//        // 支持两指缩放
+//        mXWalkSettings.setBuiltInZoomControls(true);
+//
+//        mXWalkView.load("https://raw.githubusercontent.com/kekulyh/AccurateIndoorPositioning-Android/master/README.md", null);
+//    }
+//
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        if (mXWalkView != null) {
+//            mXWalkView.pauseTimers();
+//            mXWalkView.onHide();
+//        }
+//    }
+//
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        if (mXWalkView != null) {
+//            mXWalkView.resumeTimers();
+//            mXWalkView.onShow();
+//        }
+//    }
+//
+//    @Override
+//    public void onDestroy() {
+//        super.onDestroy();
+//        if (mXWalkView != null) {
+//            mXWalkView.onDestroy();
+//        }
+//    }
+//
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+////        super.onActivityResult(requestCode, resultCode, data);
+//        if (mXWalkView != null) {
+//            mXWalkView.onActivityResult(requestCode, resultCode, data);
+//        }
+//    }
 
 
     /**

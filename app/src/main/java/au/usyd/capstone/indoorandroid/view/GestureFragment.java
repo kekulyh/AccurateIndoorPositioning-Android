@@ -18,6 +18,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkSettings;
@@ -100,6 +101,23 @@ public class GestureFragment extends Fragment {
         // init XWalkView
         initXWalkView(view);
 
+        Button btnStart = (Button) view.findViewById(R.id.gestureStartButton);
+        Button btnStop = (Button) view.findViewById(R.id.gestureStopButton);
+
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mXWalkView.load("javascript:start()", null);
+            }
+        });
+        btnStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mXWalkView.load("javascript:stop()", null);
+            }
+        });
+
+
         return view;
     }
 
@@ -140,7 +158,7 @@ public class GestureFragment extends Fragment {
         // 支持两指缩放
         mXWalkSettings.setBuiltInZoomControls(true);
 
-        mXWalkView.load("http://192.168.0.6:8080/capstone/gesture", null);
+        mXWalkView.load("http://192.168.0.6:8080/capstone/gestureandroid", null);
     }
 
     @Override

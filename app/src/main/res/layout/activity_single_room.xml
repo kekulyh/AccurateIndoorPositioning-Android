@@ -37,25 +37,32 @@
 
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:layout_gravity="center"
         >
 
         <Button
+            android:id="@+id/singleRoomStartButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start Tracking"
+            android:text="Start Tracking Coordinate"
             android:onClick="ajax"
-            android:layout_alignParentLeft="true"
+            android:layout_marginRight="10dp"
             />
 
         <Button
+            android:id="@+id/singleRoomStopButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Stop"
             android:onClick="abort"
-            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/singleRoomStartButton"
+            android:layout_marginLeft="10dp"
             />
 
     </RelativeLayout>
